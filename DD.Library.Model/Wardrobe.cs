@@ -11,6 +11,7 @@ namespace DD.Library.Model
 		{
 			Books = new List<Book>();
 		}
+		[Key]
 		public int Id { get; set; }
 		[Required]
 		public string Name{ get; set; }

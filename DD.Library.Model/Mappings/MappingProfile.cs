@@ -11,6 +11,7 @@ namespace DD.Library.Model.Mappings
 		{
 			CreateMap<WardrobeView, Wardrobe>();
 			CreateMap<WardrobeCreating, Wardrobe>();
+			CreateMap<WardrobeUpdate, Wardrobe>();
 		}
 	}
 }

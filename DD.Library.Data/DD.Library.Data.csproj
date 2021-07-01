@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DD.Library.IData\DD.Library.IData.csproj" />
+    <ProjectReference Include="..\DD.Library.Model\DD.Library.Model.csproj" />
+  </ItemGroup>
+
 </Project>

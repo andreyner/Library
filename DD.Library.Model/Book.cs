@@ -5,6 +5,7 @@ namespace DD.Library.Model
 {
 	public class Book
 	{
+		[Key]
 		public int Id { get; set; }
 		[Required]
 		[MinLength(2)]

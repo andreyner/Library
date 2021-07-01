@@ -14,8 +14,8 @@ namespace DD.Library.Model
         }
         public LibraryDbContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+           // Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -25,9 +25,9 @@ namespace DD.Library.Model
             modelBuilder.Entity<Wardrobe>().HasData(
                 new Wardrobe[]
                 {
-                new Wardrobe { Id=1},
-                new Wardrobe { Id=2},
-                new Wardrobe { Id=3}
+                new Wardrobe { Id=1,Name="Wardrobe1"},
+                new Wardrobe { Id=2,Name="Wardrobe2"},
+                new Wardrobe { Id=3,Name="Wardrobe3"}
                 });
             modelBuilder.Entity<Author>().HasData(
     new Author[]
@@ -42,7 +42,7 @@ namespace DD.Library.Model
                 new Book { Id=1,Name="Книга 1", WardrobeId=1,AuthorId=1},
                 new Book { Id=2, Name="Книга 2",WardrobeId=2,AuthorId=2},
                 new Book { Id=3, Name="Книга 3",WardrobeId=2,AuthorId=3},
-                new Book { Id=3, Name="Книга 4",WardrobeId=2,AuthorId=1}
+                new Book { Id=4, Name="Книга 4",WardrobeId=2,AuthorId=1}
     });
         }
     }

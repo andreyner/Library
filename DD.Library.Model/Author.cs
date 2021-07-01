@@ -7,6 +7,7 @@ namespace DD.Library.Model
 {
 	public class Author
 	{
+		[Key]
 		public int Id { get; set; }
 		[Required]
 		[MinLength(1)]
