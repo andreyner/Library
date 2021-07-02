@@ -1,11 +1,15 @@
-﻿using System;
+﻿using DataAnnotationsExtensions;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace DD.Library.Model
+namespace DD.Library.Model.Mappings
 {
-	public class Book
+	public class BookUpdate
 	{
-		[Key]
+		[Required]
+		[Min(1)]
 		public int Id { get; set; }
 		[Required]
 		[MinLength(2)]
@@ -13,10 +17,5 @@ namespace DD.Library.Model
 
 		[Required]
 		public int AuthorId { get; set; }
-		public Author Author { get; set; }
-
-		public int ? WardrobeId { get; set; }
-		public Wardrobe Wardrobe { get; set; }
-
 	}
 }

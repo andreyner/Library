@@ -7,11 +7,17 @@ using System.Threading;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using DD.Library.Model.Mappings;
 
 namespace DD.Library.Data
 {
-	public class WardrobeReository : IWardrobeReository
+	public class WardrobeRepository: Repository, IWardrobeRepository
 	{
+		public WardrobeRepository(IMapper mapper) : base(mapper)
+		{
+		}
+
 		public async Task Create(Wardrobe newWardrobe)
 		{
 			using(LibraryDbContext dbContext=new LibraryDbContext()) 
@@ -22,12 +28,14 @@ namespace DD.Library.Data
 			
 		}
 
-		public async Task Edit(Wardrobe editWardrobe)
+		public async Task Edit(WardrobeUpdate editedWardrobe)
 		{
 			using (LibraryDbContext dbContext = new LibraryDbContext())
 			{
-				dbContext.Set<Wardrobe>().Attach(editWardrobe);
-				dbContext.Entry(editWardrobe).State = EntityState.Modified;
+				var destinationWardrobe = dbContext.Wardrobes.FirstOrDefault(x => x.Id == editedWardrobe.Id);
+				if (destinationWardrobe == null) { throw new Exception($"Стилаж с id {editedWardrobe.Id} не найден!"); }
+				var wardrobeDestination = AutoMapper.Map(editedWardrobe, destinationWardrobe);
+				dbContext.Update(destinationWardrobe);
 				await dbContext.SaveChangesAsync();
 			}
 		}

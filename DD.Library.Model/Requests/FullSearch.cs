@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DD.Library.Model
+namespace DD.Library.Model.Requests
 {
-	public class Wardrobe
+	public class FullSearch
 	{
-		[Key]
-		public int Id { get; set; }
 		[Required]
-		public string Name{ get; set; }
+		public string SearchText { get; set; }
 	}
 }

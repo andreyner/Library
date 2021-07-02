@@ -9,7 +9,6 @@ namespace DD.Library.Model.Mappings
 	{
 		public int Id { get; set; }
 
-		[Required]
 		public string Name { get; set; }
 	}
 }

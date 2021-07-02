@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DD.Library.Helper", "DD.Lib
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DD.Library.WebApplication", "DD.Library.WebApplication\DD.Library.WebApplication.csproj", "{C7D7EC9E-8832-4A9F-91CE-7840BDEEB09A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DD.Library.IData", "DD.Library.IData\DD.Library.IData.csproj", "{EFD45DBD-05F1-4049-ABD7-5C3F6EDDED34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DD.Library.IData", "DD.Library.IData\DD.Library.IData.csproj", "{EFD45DBD-05F1-4049-ABD7-5C3F6EDDED34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DD.Library.Data", "DD.Library.Data\DD.Library.Data.csproj", "{83CEEB57-697D-42F6-9E26-B453B155ED5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DD.Library.Data", "DD.Library.Data\DD.Library.Data.csproj", "{83CEEB57-697D-42F6-9E26-B453B155ED5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

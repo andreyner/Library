@@ -12,6 +12,11 @@ namespace DD.Library.Model.Mappings
 			CreateMap<WardrobeView, Wardrobe>();
 			CreateMap<WardrobeCreating, Wardrobe>();
 			CreateMap<WardrobeUpdate, Wardrobe>();
+			CreateMap<BookView, Book>();
+			CreateMap<Book,BookView>();
+			CreateMap<BookCreating, Book>();
+			CreateMap<BookUpdate, Book>();
+			CreateMap<AuthorCreating, Author>();
 		}
 	}
 }

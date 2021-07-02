@@ -17,10 +17,10 @@ namespace DD.Library.WebApplication.Controllers
 		public WardrobeController (IMapper mapper)
 		{
 			this.AutoMapper = mapper;
-			this.WardrobeReository = new WardrobeReository();
+			this.WardrobeRepository = new WardrobeRepository(mapper);
 		}
 		private readonly IMapper AutoMapper;
-		private readonly WardrobeReository WardrobeReository;
+		private readonly WardrobeRepository WardrobeRepository;
 		public string Index()
 		{
 			return $"Hello from Library!";
@@ -30,14 +30,14 @@ namespace DD.Library.WebApplication.Controllers
 		{
 			Validator<WardrobeCreating>.CheckValid(wardrobe);
 			var wardrobeDestination = AutoMapper.Map<Wardrobe>(wardrobe);
-			var creatingTask=WardrobeReository.Create(wardrobeDestination);
+			var creatingTask=WardrobeRepository.Create(wardrobeDestination);
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
 		[HttpGet]
 		public async Task<IActionResult> GetWardrobe(int id)
 		{			
-			var gettingTask= WardrobeReository.GetById(id);
+			var gettingTask= WardrobeRepository.GetById(id);
 			await Task.WhenAll(gettingTask);
 			return Ok(gettingTask.Result);
 		}
@@ -46,8 +46,7 @@ namespace DD.Library.WebApplication.Controllers
 		public async Task<IActionResult> UpdateWardrobe([FromBody] WardrobeUpdate wardrobe)
 		{
 			Validator<WardrobeUpdate>.CheckValid(wardrobe);
-			var wardrobeDestination = AutoMapper.Map<Wardrobe>(wardrobe);
-			var updateingTask = WardrobeReository.Edit(wardrobeDestination);
+			var updateingTask = WardrobeRepository.Edit(wardrobe);
 			await Task.WhenAll(updateingTask);
 			return Ok();
 		}

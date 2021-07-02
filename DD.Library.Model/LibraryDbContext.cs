@@ -14,8 +14,8 @@ namespace DD.Library.Model
         }
         public LibraryDbContext()
         {
-           // Database.EnsureDeleted();
-            //Database.EnsureCreated();
+           /* Database.EnsureDeleted();
+            Database.EnsureCreated();*/
         }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
