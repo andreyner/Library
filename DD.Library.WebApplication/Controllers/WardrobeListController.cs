@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using DD.Library.Data;
 using DD.Library.Model.Mappings;
-using DD.Library.WebApplication.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
