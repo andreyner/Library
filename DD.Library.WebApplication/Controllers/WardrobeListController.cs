@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace DD.Library.WebApplication.Controllers
 {
-
+	[Route("[controller]")]
+	[ApiController]
 	public class WardrobeListController : ControllerBase
 	{
 		public WardrobeListController(IMapper mapper)
@@ -20,7 +21,7 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly WardrobeListRepository WardrobeListRepository;
-		[HttpPost]
+		[HttpPost(nameof(CreateWardrobeList))]
 		public async Task<IActionResult> CreateWardrobeList([FromBody] List<WardrobeCreating> wardrobes)
 		{
 			Validator<WardrobeCreating>.CheckValid(wardrobes);
@@ -28,14 +29,14 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
-		[HttpGet]
+		[HttpGet(nameof(GetWardrobes))]
 		public async Task<IActionResult> GetWardrobes()
 		{
 			var gettingTask = WardrobeListRepository.GetAllWardrobes();
 			await Task.WhenAll(gettingTask);
 			return Ok(gettingTask.Result);
 		}
-		[HttpPut]
+		[HttpPut(nameof(UpdateWardrobeList))]
 		public async Task<IActionResult> UpdateWardrobeList([FromBody] List<WardrobeUpdate> wardrobes)
 		{
 			Validator<WardrobeUpdate>.CheckValid(wardrobes);

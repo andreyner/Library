@@ -14,7 +14,8 @@ namespace DD.Library.Model
         }
         public LibraryDbContext()
         {
-           /* Database.EnsureDeleted();
+            //после создания базы закоммментить для работы Поиска книги
+            /*Database.EnsureDeleted();
             Database.EnsureCreated();*/
         }
         public DbSet<Author> Authors { get; set; }

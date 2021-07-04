@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DD.Library.WebApplication.Controllers
 {
-
+	[Route("[controller]")]
+	[ApiController]
 	public class BookListController : ControllerBase
 	{
 		public BookListController(IMapper mapper)
@@ -17,7 +18,7 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly BookListRepository BookListRepository;
-		[HttpPost]
+		[HttpPost(nameof(CreateBookList))]
 		public async Task<IActionResult> CreateBookList([FromBody] List<BookCreating> books)
 		{
 			Validator<BookCreating>.CheckValid(books);
@@ -25,14 +26,14 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
-		[HttpGet]
+		[HttpGet(nameof(GetBooks))]
 		public async Task<IActionResult> GetBooks()
 		{
 			var gettingTask = BookListRepository.GetAllBooks();
 			await Task.WhenAll(gettingTask);
 			return Ok(gettingTask.Result);
 		}
-		[HttpPut]
+		[HttpPut(nameof(UpdateBookList))]
 		public async Task<IActionResult> UpdateBookList([FromBody] List<BookUpdate> books)
 		{
 			Validator<BookUpdate>.CheckValid(books);

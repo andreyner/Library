@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace DD.Library.WebApplication.Controllers
 {
-
+	[Route("[controller]")]
+	[ApiController]
 	public class BookController : ControllerBase
 	{
 		public BookController(IMapper mapper)
@@ -22,11 +23,8 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly BookRepository BookRepository;
-		public string Index()
-		{
-			return $"Hello from Book!";
-		}
-		[HttpPost]
+
+		[HttpPost(nameof(CreateBook))]
 		public async Task<IActionResult> CreateBook([FromBody] BookCreating book)
 		{
 			Validator<BookCreating>.CheckValid(book);
@@ -43,7 +41,7 @@ namespace DD.Library.WebApplication.Controllers
 			var bookDestination = AutoMapper.Map<BookView>(gettingTask.Result);
 			return Ok(bookDestination);
 		}
-		[HttpPut]
+		[HttpPut(nameof(UpdateBook))]
 		public async Task<IActionResult> UpdateBook([FromBody] BookUpdate book)
 		{
 			Validator<BookUpdate>.CheckValid(book);
@@ -51,7 +49,7 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(updateingTask);
 			return Ok();
 		}
-		[HttpPut]
+		[HttpPut(nameof(PutBookInWardrobe))]
 		public async Task<IActionResult> PutBookInWardrobe([FromBody] BookInWardrobe bookInWardrobeRequest)
 		{
 			Validator<BookInWardrobe>.CheckValid(bookInWardrobeRequest);
@@ -59,7 +57,7 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(updateingTask);
 			return Ok();
 		}
-		[HttpPost]
+		[HttpPost(nameof(ExecuteFullTextSearch))]
 		public async Task<IActionResult> ExecuteFullTextSearch([FromBody] FullSearch searchText)
 		{
 			Validator<FullSearch>.CheckValid(searchText);

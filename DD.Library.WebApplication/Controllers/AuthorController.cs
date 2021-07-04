@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace DD.Library.WebApplication.Controllers
 {
-
+	[Route("[controller]")]
+	[ApiController]
 	public class AuthorController : ControllerBase
 	{
 		public AuthorController(IMapper mapper)
@@ -21,7 +22,7 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly AuthorRepository AuthorRepository;
-		[HttpPost]
+		[HttpPost(nameof(CreateAuthor))]
 		public async Task<IActionResult> CreateAuthor([FromBody] AuthorCreating author)
 		{
 			Validator<AuthorCreating>.CheckValid(author);

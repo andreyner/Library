@@ -10,6 +10,7 @@ namespace DD.Library.Model.Mappings
 		public MappingProfile()
 		{
 			CreateMap<WardrobeView, Wardrobe>();
+			CreateMap<Wardrobe, WardrobeView>();
 			CreateMap<WardrobeCreating, Wardrobe>();
 			CreateMap<WardrobeUpdate, Wardrobe>();
 			CreateMap<BookView, Book>();
