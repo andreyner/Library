@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DD.Library.Data;
 using DD.Library.Model.Mappings;
+using DD.Library.WebApplication.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace DD.Library.WebApplication.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
+	[CustomExceptionFilter]
 	public class BookListController : ControllerBase
 	{
 		public BookListController(IMapper mapper)

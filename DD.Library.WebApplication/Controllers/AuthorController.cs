@@ -2,6 +2,7 @@
 using DD.Library.Data;
 using DD.Library.Model;
 using DD.Library.Model.Mappings;
+using DD.Library.WebApplication.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ namespace DD.Library.WebApplication.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
+	[CustomExceptionFilter]
 	public class AuthorController : ControllerBase
 	{
 		public AuthorController(IMapper mapper)

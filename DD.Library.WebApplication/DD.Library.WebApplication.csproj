@@ -5,14 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="C:\Users\Andrey\.nuget\packages\nlog.config\4.7.10\contentFiles\any\any\NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="NLog.Config" Version="4.7.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DD.Library.Data\DD.Library.Data.csproj" />
+    <ProjectReference Include="..\DD.Library.Logger\DD.Library.Logger.csproj" />
     <ProjectReference Include="..\DD.Library.Model\DD.Library.Model.csproj" />
   </ItemGroup>
 

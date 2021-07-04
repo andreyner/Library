@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
+using DD.Library.Logger;
 
 namespace DD.Library.WebApplication
 {
@@ -27,10 +28,11 @@ namespace DD.Library.WebApplication
 			services.AddSingleton(mapper);
 			services.AddControllers();
 			services.AddSwaggerGen();
+			services.AddSingleton<ILog, LogNLog>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILog logger)
 		{
 			// Enable middleware to serve generated Swagger as a JSON endpoint.
 			app.UseSwagger();
@@ -45,7 +47,7 @@ namespace DD.Library.WebApplication
 			{
 				app.UseDeveloperExceptionPage();
 			}
-
+			app.ConfigureExceptionHandler(logger);
 			app.UseRouting();
 
 			app.UseEndpoints(endpoints =>
