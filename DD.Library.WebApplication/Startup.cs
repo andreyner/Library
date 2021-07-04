@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
 using DD.Library.Logger;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace DD.Library.WebApplication
 {
@@ -27,7 +29,14 @@ namespace DD.Library.WebApplication
 			IMapper mapper = mapperConfig.CreateMapper();
 			services.AddSingleton(mapper);
 			services.AddControllers();
-			services.AddSwaggerGen();
+			services.AddSwaggerGen(options => {
+				//Determine base path for the application.
+				var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+				//Set the comments path for the swagger json and ui.
+				var xmlPath = Path.Combine(basePath, "LibraryApi.xml");
+				options.IncludeXmlComments(xmlPath);
+			});
+
 			services.AddSingleton<ILog, LogNLog>();
 		}
 

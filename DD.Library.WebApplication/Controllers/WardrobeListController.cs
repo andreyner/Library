@@ -12,7 +12,7 @@ namespace DD.Library.WebApplication.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
-	
+
 	public class WardrobeListController : ControllerBase
 	{
 		public WardrobeListController(IMapper mapper)
@@ -22,6 +22,21 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly WardrobeListRepository WardrobeListRepository;
+		/// <summary>
+		/// Создание списка стилажей
+		/// </summary>
+		/// <remarks>
+		/// [
+		///{
+		///	"Name":"Стилаж1"
+		///},
+		///	{
+		///	"Name":"Стилаж2"
+		///}
+		///]
+		/// </remarks>
+		/// <param name="wardrobes"></param>
+		/// <returns></returns>
 		[HttpPost(nameof(CreateWardrobeList))]
 		public async Task<IActionResult> CreateWardrobeList([FromBody] List<WardrobeCreating> wardrobes)
 		{
@@ -30,6 +45,10 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
+		/// <summary>
+		/// Получение списка стилажей
+		/// </summary>
+		/// <returns></returns>
 		[HttpGet(nameof(GetWardrobes))]
 		public async Task<IActionResult> GetWardrobes()
 		{
@@ -37,6 +56,23 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(gettingTask);
 			return Ok(gettingTask.Result);
 		}
+		/// <summary>
+		/// Обновление списка стилажей
+		/// </summary>
+		/// <remarks>
+		///	[
+		///	{
+		///	"Id": 1,
+		///	"Name":"Стилаж1"
+		///},
+		///	{
+		///	"Id": 50,
+		///	"Name":"Стилаж2"
+		///}
+		///]
+		/// </remarks>
+		/// <param name="wardrobes"></param>
+		/// <returns></returns>
 		[HttpPut(nameof(UpdateWardrobeList))]
 		public async Task<IActionResult> UpdateWardrobeList([FromBody] List<WardrobeUpdate> wardrobes)
 		{

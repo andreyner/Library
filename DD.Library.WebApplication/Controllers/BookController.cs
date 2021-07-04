@@ -23,7 +23,18 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly BookRepository BookRepository;
-
+		/// <summary>
+		/// Создание книги
+		/// </summary>
+		/// <remarks>
+		/// {
+		///"Name":"Сказки для детей",
+		///"AuthorId":1,
+		///"WardrobeId":1
+		///}
+		/// </remarks>
+		/// <param name="book"></param>
+		/// <returns></returns>
 		[HttpPost(nameof(CreateBook))]
 		public async Task<IActionResult> CreateBook([FromBody] BookCreating book)
 		{
@@ -33,6 +44,14 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
+		/// <summary>
+		/// Получение книги
+		/// </summary>
+		/// <remarks>
+		/// 
+		/// </remarks>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		[HttpGet]
 		public async Task<IActionResult> GetBook(int id)
 		{
@@ -41,6 +60,18 @@ namespace DD.Library.WebApplication.Controllers
 			var bookDestination = AutoMapper.Map<BookView>(gettingTask.Result);
 			return Ok(bookDestination);
 		}
+		/// <summary>
+		/// Обновление книги
+		/// </summary>
+		///<remarks>
+		///{
+		///"Id": 1,
+		///"Name":"Book2",
+		///"AuthorId": 50
+		///}
+		/// </remarks>
+		/// <param name="book"></param>
+		/// <returns></returns>
 		[HttpPut(nameof(UpdateBook))]
 		public async Task<IActionResult> UpdateBook([FromBody] BookUpdate book)
 		{
@@ -49,6 +80,17 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(updateingTask);
 			return Ok();
 		}
+		/// <summary>
+		/// Поместиить книгу в стилаж
+		/// </summary>
+		///<remarks>
+		///{
+		///"BookId": 1,
+		///"WardrobeId": 2
+		///}
+		///</remarks>
+		/// <param name="bookInWardrobeRequest"></param>
+		/// <returns></returns>
 		[HttpPut(nameof(PutBookInWardrobe))]
 		public async Task<IActionResult> PutBookInWardrobe([FromBody] BookInWardrobe bookInWardrobeRequest)
 		{
@@ -57,6 +99,16 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(updateingTask);
 			return Ok();
 		}
+		/// <summary>
+		/// Поиск книги по имени и по фамилии автора
+		/// </summary>
+		/// <remarks>
+		/// {
+		///"SearchText":"Тест"
+		///}
+		/// </remarks>
+		/// <param name="searchText"></param>
+		/// <returns></returns>
 		[HttpPost(nameof(ExecuteFullTextSearch))]
 		public async Task<IActionResult> ExecuteFullTextSearch([FromBody] FullSearch searchText)
 		{

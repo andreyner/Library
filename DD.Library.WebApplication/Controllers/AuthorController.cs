@@ -22,6 +22,18 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly AuthorRepository AuthorRepository;
+		/// <summary>
+		/// Создание автора
+		/// </summary>
+		/// <remarks>
+		///{
+		///	"FirstName":"Александр",
+		///	"LastName":"",
+		///	"Patronymic":"Пушкин"
+		///}
+		/// </remarks>
+		/// <param name="author"></param>
+		/// <returns></returns>
 		[HttpPost(nameof(CreateAuthor))]
 		public async Task<IActionResult> CreateAuthor([FromBody] AuthorCreating author)
 		{

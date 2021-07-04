@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DD.Library.WebApplication</name>
+    </assembly>
+    <members>
+        <member name="M:DD.Library.WebApplication.Controllers.AuthorController.CreateAuthor(DD.Library.Model.Mappings.AuthorCreating)">
+             <summary>
+             Создание автора
+             </summary>
+             <remarks>
+            {
+            	"FirstName":"Александр",
+            	"LastName":"",
+            	"Patronymic":"Пушкин"
+            }
+             </remarks>
+             <param name="author"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookController.CreateBook(DD.Library.Model.Mappings.BookCreating)">
+             <summary>
+             Создание книги
+             </summary>
+             <remarks>
+             {
+            "Name":"Сказки для детей",
+            "AuthorId":1,
+            "WardrobeId":1
+            }
+             </remarks>
+             <param name="book"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookController.GetBook(System.Int32)">
+            <summary>
+            Получение книги
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookController.UpdateBook(DD.Library.Model.Mappings.BookUpdate)">
+             <summary>
+             Обновление книги
+             </summary>
+            <remarks>
+            {
+            "Id": 1,
+            "Name":"Book2",
+            "AuthorId": 50
+            }
+             </remarks>
+             <param name="book"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookController.PutBookInWardrobe(DD.Library.Model.Requests.BookInWardrobe)">
+             <summary>
+             Поместиить книгу в стилаж
+             </summary>
+            <remarks>
+            {
+            "BookId": 1,
+            "WardrobeId": 2
+            }
+            </remarks>
+             <param name="bookInWardrobeRequest"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookController.ExecuteFullTextSearch(DD.Library.Model.Requests.FullSearch)">
+             <summary>
+             Поиск книги по имени и по фамилии автора
+             </summary>
+             <remarks>
+             {
+            "SearchText":"Тест"
+            }
+             </remarks>
+             <param name="searchText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookListController.CreateBookList(System.Collections.Generic.List{DD.Library.Model.Mappings.BookCreating})">
+             <summary>
+             Создание списка книг
+             </summary>
+             <remarks>
+            	[
+            	{
+            	"Name":"Book2",
+            	"AuthorId":1,
+            	"WardrobeId":1
+            },
+            	{
+            	"Name":"Book3",
+            	"AuthorId":1,
+            	"WardrobeId":1
+            }	
+            ]
+             </remarks>
+             <param name="books"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookListController.GetBooks">
+            <summary>
+            Получение списка книг
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.BookListController.UpdateBookList(System.Collections.Generic.List{DD.Library.Model.Mappings.BookUpdate})">
+             <summary>
+             Обновление списка книг
+             </summary>
+             <remarks>
+            	[
+            	{
+            	"id":1,
+            	"Name":"sxsxs4",
+            	"AuthorId":1
+            },
+            {
+            	"id":2,
+            	"Name":"sxsxs5",
+            	"AuthorId":2
+            }
+            ]
+             </remarks>
+             <param name="books"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.WardrobeController.CreateWardrobe(DD.Library.Model.Mappings.WardrobeCreating)">
+             <summary>
+             Создание стилажа
+             </summary>
+             <remarks>
+             {
+            	"Name":"Wardrobe1"
+            }
+             </remarks>
+             <param name="wardrobe"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.WardrobeController.GetWardrobe(System.Int32)">
+            <summary>
+            Получение стилажа
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.WardrobeController.UpdateWardrobe(DD.Library.Model.Mappings.WardrobeUpdate)">
+             <summary>
+             Обновление стилажа
+             </summary>
+             <remarks>
+             {
+            	"Id": 1,
+            	"Name":"Wardrobe12"
+            }
+             </remarks>
+             <param name="wardrobe"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.WardrobeListController.CreateWardrobeList(System.Collections.Generic.List{DD.Library.Model.Mappings.WardrobeCreating})">
+             <summary>
+             Создание списка стилажей
+             </summary>
+             <remarks>
+             [
+            {
+            	"Name":"Стилаж1"
+            },
+            	{
+            	"Name":"Стилаж2"
+            }
+            ]
+             </remarks>
+             <param name="wardrobes"></param>
+             <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.WardrobeListController.GetWardrobes">
+            <summary>
+            Получение списка стилажей
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DD.Library.WebApplication.Controllers.WardrobeListController.UpdateWardrobeList(System.Collections.Generic.List{DD.Library.Model.Mappings.WardrobeUpdate})">
+             <summary>
+             Обновление списка стилажей
+             </summary>
+             <remarks>
+            	[
+            	{
+            	"Id": 1,
+            	"Name":"Стилаж1"
+            },
+            	{
+            	"Id": 50,
+            	"Name":"Стилаж2"
+            }
+            ]
+             </remarks>
+             <param name="wardrobes"></param>
+             <returns></returns>
+        </member>
+    </members>
+</doc>

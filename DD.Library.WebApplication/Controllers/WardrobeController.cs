@@ -14,31 +14,56 @@ namespace DD.Library.WebApplication.Controllers
 	[Route("[controller]")]
 	[ApiController]
 	public class WardrobeController : ControllerBase
-	{		
-		public WardrobeController (IMapper mapper)
+	{
+		public WardrobeController(IMapper mapper)
 		{
 			this.AutoMapper = mapper;
 			this.WardrobeRepository = new WardrobeRepository(mapper);
 		}
 		private readonly IMapper AutoMapper;
 		private readonly WardrobeRepository WardrobeRepository;
-
+		/// <summary>
+		/// Создание стилажа
+		/// </summary>
+		/// <remarks>
+		/// {
+		///	"Name":"Wardrobe1"
+		///}
+		/// </remarks>
+		/// <param name="wardrobe"></param>
+		/// <returns></returns>
 		[HttpPost(nameof(CreateWardrobe))]
 		public async Task<IActionResult> CreateWardrobe([FromBody] WardrobeCreating wardrobe)
 		{
 			Validator<WardrobeCreating>.CheckValid(wardrobe);
 			var wardrobeDestination = AutoMapper.Map<Wardrobe>(wardrobe);
-			var creatingTask=WardrobeRepository.Create(wardrobeDestination);
+			var creatingTask = WardrobeRepository.Create(wardrobeDestination);
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
+		/// <summary>
+		/// Получение стилажа
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		[HttpGet(nameof(GetWardrobe))]
 		public async Task<IActionResult> GetWardrobe(int id)
-		{			
-			var gettingTask= WardrobeRepository.GetById(id);
+		{
+			var gettingTask = WardrobeRepository.GetById(id);
 			await Task.WhenAll(gettingTask);
 			return Ok(gettingTask.Result);
 		}
+		/// <summary>
+		/// Обновление стилажа
+		/// </summary>
+		/// <remarks>
+		/// {
+		///	"Id": 1,
+		///	"Name":"Wardrobe12"
+		///}
+		/// </remarks>
+		/// <param name="wardrobe"></param>
+		/// <returns></returns>
 
 		[HttpPut(nameof(UpdateWardrobe))]
 		public async Task<IActionResult> UpdateWardrobe([FromBody] WardrobeUpdate wardrobe)

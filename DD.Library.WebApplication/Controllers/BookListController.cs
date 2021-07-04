@@ -18,6 +18,25 @@ namespace DD.Library.WebApplication.Controllers
 		}
 		private readonly IMapper AutoMapper;
 		private readonly BookListRepository BookListRepository;
+		/// <summary>
+		/// Создание списка книг
+		/// </summary>
+		/// <remarks>
+		///	[
+		///	{
+		///	"Name":"Book2",
+		///	"AuthorId":1,
+		///	"WardrobeId":1
+		///},
+		///	{
+		///	"Name":"Book3",
+		///	"AuthorId":1,
+		///	"WardrobeId":1
+		///}	
+		///]
+		/// </remarks>
+		/// <param name="books"></param>
+		/// <returns></returns>
 		[HttpPost(nameof(CreateBookList))]
 		public async Task<IActionResult> CreateBookList([FromBody] List<BookCreating> books)
 		{
@@ -26,6 +45,13 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(creatingTask);
 			return Ok();
 		}
+		/// <summary>
+		/// Получение списка книг
+		/// </summary>
+		/// <remarks>
+		/// 
+		/// </remarks>
+		/// <returns></returns>
 		[HttpGet(nameof(GetBooks))]
 		public async Task<IActionResult> GetBooks()
 		{
@@ -33,6 +59,25 @@ namespace DD.Library.WebApplication.Controllers
 			await Task.WhenAll(gettingTask);
 			return Ok(gettingTask.Result);
 		}
+		/// <summary>
+		/// Обновление списка книг
+		/// </summary>
+		/// <remarks>
+		///	[
+		///	{
+		///	"id":1,
+		///	"Name":"sxsxs4",
+		///	"AuthorId":1
+		///},
+		///{
+		///	"id":2,
+		///	"Name":"sxsxs5",
+		///	"AuthorId":2
+		///}
+		///]
+		/// </remarks>
+		/// <param name="books"></param>
+		/// <returns></returns>
 		[HttpPut(nameof(UpdateBookList))]
 		public async Task<IActionResult> UpdateBookList([FromBody] List<BookUpdate> books)
 		{
