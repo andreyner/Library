@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DD.Library.Data;
+using DD.Library.IData;
 using DD.Library.Model.Mappings;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -11,13 +12,13 @@ namespace DD.Library.WebApplication.Controllers
 	[ApiController]
 	public class BookListController : ControllerBase
 	{
-		public BookListController(IMapper mapper)
+		public BookListController(IMapper mapper, IBookListRepository bookListRepository)
 		{
 			this.AutoMapper = mapper;
-			this.BookListRepository = new BookListRepository(mapper);
+			this.BookListRepository = bookListRepository;
 		}
 		private readonly IMapper AutoMapper;
-		private readonly BookListRepository BookListRepository;
+		private readonly IBookListRepository BookListRepository;
 		/// <summary>
 		/// Создание списка книг
 		/// </summary>

@@ -9,6 +9,9 @@ namespace DD.Library.Data
 {
 	public class AuthorRepository : IAuthorRepository
 	{
+		public AuthorRepository()
+		{ 
+		}
 		public async Task Create(Author author)
 		{
 			using (LibraryDbContext dbContext = new LibraryDbContext())

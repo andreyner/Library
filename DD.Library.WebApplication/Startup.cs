@@ -13,6 +13,8 @@ using System.Reflection;
 using DD.Library.Logger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using DD.Library.IData;
+using DD.Library.Data;
 
 namespace DD.Library.WebApplication
 {
@@ -28,6 +30,23 @@ namespace DD.Library.WebApplication
 			});
 			IMapper mapper = mapperConfig.CreateMapper();
 			services.AddSingleton(mapper);
+			services.AddScoped<IAuthorRepository, AuthorRepository>();
+			services.AddScoped<IBookRepository, BookRepository>(x => 
+			{
+				return new BookRepository(mapper);
+			});
+			services.AddScoped<IBookListRepository, BookListRepository>(x =>
+			{
+				return new BookListRepository(mapper);
+			});
+			services.AddScoped<IWardrobeRepository, WardrobeRepository>(x =>
+			{
+				return new WardrobeRepository(mapper);
+			});
+			services.AddScoped<IWardrobeListRepository, WardrobeListRepository>(x =>
+			{
+				return new WardrobeListRepository(mapper);
+			});
 			services.AddControllers();
 			services.AddSwaggerGen(options => {
 				//Determine base path for the application.

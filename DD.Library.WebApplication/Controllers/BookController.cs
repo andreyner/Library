@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DD.Library.Data;
+using DD.Library.IData;
 using DD.Library.Model;
 using DD.Library.Model.Mappings;
 using DD.Library.Model.Requests;
@@ -16,13 +17,13 @@ namespace DD.Library.WebApplication.Controllers
 	[ApiController]
 	public class BookController : ControllerBase
 	{
-		public BookController(IMapper mapper)
+		public BookController(IMapper mapper, IBookRepository BookRepository)
 		{
 			this.AutoMapper = mapper;
-			this.BookRepository = new BookRepository(mapper);
+			this.BookRepository = BookRepository;
 		}
 		private readonly IMapper AutoMapper;
-		private readonly BookRepository BookRepository;
+		private readonly IBookRepository BookRepository;
 		/// <summary>
 		/// Создание книги
 		/// </summary>

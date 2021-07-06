@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DD.Library.Data;
+using DD.Library.IData;
 using DD.Library.Model;
 using DD.Library.Model.Mappings;
 using Microsoft.AspNetCore.Http;
@@ -15,13 +16,13 @@ namespace DD.Library.WebApplication.Controllers
 	[ApiController]
 	public class AuthorController : ControllerBase
 	{
-		public AuthorController(IMapper mapper)
+		public AuthorController(IMapper mapper, IAuthorRepository authorRepository)
 		{
 			this.AutoMapper = mapper;
-			this.AuthorRepository = new AuthorRepository();
+			this.AuthorRepository =authorRepository;
 		}
 		private readonly IMapper AutoMapper;
-		private readonly AuthorRepository AuthorRepository;
+		private readonly IAuthorRepository AuthorRepository;
 		/// <summary>
 		/// Создание автора
 		/// </summary>

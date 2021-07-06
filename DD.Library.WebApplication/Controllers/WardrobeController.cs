@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DD.Library.Data;
+using DD.Library.IData;
 using DD.Library.Model;
 using DD.Library.Model.Mappings;
 using Microsoft.AspNetCore.Http;
@@ -15,13 +16,13 @@ namespace DD.Library.WebApplication.Controllers
 	[ApiController]
 	public class WardrobeController : ControllerBase
 	{
-		public WardrobeController(IMapper mapper)
+		public WardrobeController(IMapper mapper, IWardrobeRepository wardrobeRepository)
 		{
 			this.AutoMapper = mapper;
-			this.WardrobeRepository = new WardrobeRepository(mapper);
+			this.WardrobeRepository = wardrobeRepository;
 		}
 		private readonly IMapper AutoMapper;
-		private readonly WardrobeRepository WardrobeRepository;
+		private readonly IWardrobeRepository WardrobeRepository;
 		/// <summary>
 		/// Создание стилажа
 		/// </summary>
